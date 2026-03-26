@@ -12,6 +12,7 @@
   --color-primary-600: #27ae60;
   --color-primary-100: #e9f7ef;
   --color-primary-200: #ccd6d0;
+  --color-primary-300: #9da29f;
   --color-primary-glow: rgba(46, 204, 113, 0.6);
 
   /* Accent */
@@ -53,6 +54,8 @@
 
   /* Shadows */
   --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.4);
+
+  --border-primary: 1px solid var(--color-primary-300);
 }
 *{
     padding: 0;
