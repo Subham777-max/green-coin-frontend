@@ -20,6 +20,24 @@ export async function getAllStudents() {
     return res.data;
 }
 
+export async function getStudentById(id){
+    const res = await api.get(`/admin/students/${id}`);
+    return res.data;
+}
+
+export async function updateStudentUID(id){
+    const res = await api.patch(`/admin/students/${id}/uid`);
+    return res.data;
+}
+export async function deleteStudent(id){
+    const res = await api.delete(`/admin/students/${id}`);
+    return res.data;
+}
+export async function promoteToAdmin(id){
+    const res = await api.patch(`/admin/users/${id}/promote`);
+    return res.data;
+}
+
 export async function getOverallWeeklyAnalytics() {
     const res = await api.get("/analytics/weekly/college");
     return res.data;
