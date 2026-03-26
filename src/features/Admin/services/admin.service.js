@@ -43,6 +43,11 @@ export async function getOverallWeeklyAnalytics() {
     return res.data;
 }
 
+export async function getUserWeeklyAnalytics(id) {
+    const res = await api.get(`/analytics/weekly/user/${id}`);
+    return res.data;
+}
+
 export async function leaderboard() {
     const res = await api.get("/leaderboard");
     return res.data;

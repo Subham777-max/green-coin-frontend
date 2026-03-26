@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import useAdmin from '../hooks/useAdmin'
 import "../styles/userManagement.style.scss"
 
 import UserActions from '../components/UserActions'
 
 function UserManagement() {
+  const navigate = useNavigate()
   const { students, isLoading } = useAdmin()
   const [search, setSearch] = useState("")
 
@@ -51,7 +53,7 @@ function UserManagement() {
 
           <tbody>
             {filteredStudents.map((user) => (
-              <tr key={user._id}>
+              <tr key={user._id} onClick={() => navigate(`/user-management/${user._id}`)} style={{ cursor: 'pointer' }}>
 
                 <td className='name-cell'>
                   <div className='avatar'>
@@ -72,7 +74,7 @@ function UserManagement() {
 
                 <td>{user.points}</td>
 
-                <td className='actions-cell'>
+                <td className='actions-cell' onClick={(e) => e.stopPropagation()}>
                   <UserActions
                     userId={user._id}
                     currentRole={user.role}

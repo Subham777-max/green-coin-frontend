@@ -8,6 +8,7 @@ import UserManagement from "./features/Admin/Pages/UserManagement";
 import LeaderBoard from "./features/Admin/Pages/LeaderBoard";
 import BinPages from "./features/Admin/Pages/BinPages";
 import Marketplace from "./features/Admin/Pages/Marketplace";
+import UserDetails from "./features/Admin/Pages/UserDetails";
 
 export const router = createBrowserRouter([
     {
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
             {
                 path: "/user-management",
                 element: <UserManagement />
+            },
+            {
+                path: "/user-management/:id",
+                element: <UserDetails />
             },
             {
                 path: "/bin",

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { deleteStudent, getStudentById, promoteToAdmin, updateStudentUID } from "../services/admin.service";
+import { deleteStudent, getStudentById, promoteToAdmin, updateStudentUID, getUserWeeklyAnalytics } from "../services/admin.service";
 
 
 function useUserModification(id) {
@@ -14,7 +14,17 @@ function useUserModification(id) {
     queryKey: ["student", id],
     queryFn: () => getStudentById(id),
     enabled: !!id,
-    staleTime: 1000 * 60 * 5, 
+    staleTime: 1000 * 60 * 5,
+  });
+
+  const {
+    data: analyticsData,
+    isLoading: isAnalyticsLoading,
+  } = useQuery({
+    queryKey: ["studentAnalytics", id],
+    queryFn: () => getUserWeeklyAnalytics(id),
+    enabled: !!id,
+    staleTime: 1000 * 60 * 5,
   });
 
   const [isUpdatingUID, setIsUpdatingUID] = useState(false);
@@ -72,8 +82,10 @@ function useUserModification(id) {
 
   return {
     // student data
-    student,
+    student: student?.student,
+    analytics: analyticsData?.data || [],
     isStudentLoading,
+    isAnalyticsLoading,
     isStudentError,
     studentError,
 
