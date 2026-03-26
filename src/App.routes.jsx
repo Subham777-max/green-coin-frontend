@@ -3,7 +3,10 @@ import Login from "./features/Auth/pages/Login";
 import Register from "./features/Auth/pages/Register";
 import ProtectedRoute from "./global/utils/ProtectedRoute";
 import MainLayout from "./layout/Mainlayout";
-import DashboardAdmin from "./features/Admin/components/DashboardAdmin";
+import DashboardAdmin from "./features/Admin/Pages/DashboardAdmin";
+import UserManagement from "./features/Admin/Pages/UserManagement";
+import LeaderBoard from "./features/Admin/Pages/LeaderBoard";
+import BinPages from "./features/Admin/Pages/BinPages";
 
 export const router = createBrowserRouter([
     {
@@ -18,15 +21,15 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/user-management",
-                element: <div>User Management</div>
+                element: <UserManagement />
             },
             {
                 path: "/bin",
-                element: <div>Bin Configuration</div>
+                element: <BinPages />
             },
             {
                 path: "/leaderboard",
-                element: <div>Leaderboard</div>
+                element: <LeaderBoard />
             },
             {
                 path: "/marketplace",
