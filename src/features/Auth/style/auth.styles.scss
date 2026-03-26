@@ -6,7 +6,7 @@ main {
   padding: var(--space-lg);
   position: relative;
 
-  .brand{
+  .brand {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -14,21 +14,25 @@ main {
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
-    img{
+
+    img {
       border-radius: 50%;
       width: 50px;
     }
-    .bottom{
-      h2{
+
+    .bottom {
+      h2 {
         font-size: 2rem;
         line-height: 0.9;
         white-space: nowrap;
         color: var(--text-primary);
-        span{
+
+        span {
           color: var(--color-primary-500);
         }
       }
-      p{
+
+      p {
         font-size: 1rem;
         text-align: center;
         white-space: nowrap;
@@ -36,17 +40,14 @@ main {
       }
     }
   }
-  background: radial-gradient(
-      circle at top left,
-      #d4f5e3,
-      transparent 40%
-    ),
-    radial-gradient(
-      circle at bottom right,
-      #c8f0dc,
-      transparent 40%
-    ),
-    #e9f7ef;
+
+  background: radial-gradient(circle at top left,
+    #d4f5e3,
+    transparent 40%),
+  radial-gradient(circle at bottom right,
+    #c8f0dc,
+    transparent 40%),
+  #e9f7ef;
 
 
   .form-container {
@@ -54,7 +55,7 @@ main {
     max-width: 28rem;
     background: rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     padding: var(--space-2xl);
     border-radius: var(--space-lg);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);

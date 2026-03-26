@@ -15,7 +15,7 @@
   background: var(--color-neutral-0);
   padding: 1rem;
   border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
 
   h3 {
     margin-bottom: 1rem;
@@ -63,9 +63,17 @@
       font-size: 13px;
       margin-bottom: 4px;
 
-      &.green { color: #22c55e; }
-      &.orange { color: #f59e0b; }
-      &.red { color: #ef4444; }
+      &.green {
+        color: #22c55e;
+      }
+
+      &.orange {
+        color: #f59e0b;
+      }
+
+      &.red {
+        color: #ef4444;
+      }
     }
 
     .progress-bar {
@@ -77,9 +85,17 @@
       .fill {
         height: 100%;
 
-        &.green { background: #22c55e; }
-        &.orange { background: #f59e0b; }
-        &.red { background: #ef4444; }
+        &.green {
+          background: #22c55e;
+        }
+
+        &.orange {
+          background: #f59e0b;
+        }
+
+        &.red {
+          background: #ef4444;
+        }
       }
     }
   }
@@ -90,7 +106,7 @@
   background: var(--color-neutral-0);
   padding: 1rem;
   border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
 
   form {
     margin-top: 1rem;

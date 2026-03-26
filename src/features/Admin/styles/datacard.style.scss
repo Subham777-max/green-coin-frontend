@@ -6,11 +6,11 @@
   display: flex;
   align-items: flex-start;
   gap: 1.25rem;
-  
+
   // Soft, premium shadow
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03); 
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
   border: 1px solid rgba(0, 0, 0, 0.02);
-  
+
   transition: transform 0.2s ease;
   width: 100%;
   max-width: 390px; // Adjust based on your grid
@@ -20,7 +20,7 @@
   }
 
   // Icon Wrapper (The light gray square)
-  & > div:first-child {
+  &>div:first-child {
     background-color: #e9ecf2;
     color: #6c757d;
     min-width: 54px;
@@ -35,10 +35,11 @@
       color: #f59f00;
     }
 
-  &.green {
+    &.green {
       background: #e6fcf5;
       color: #2ecc71;
     }
+
     svg {
       width: 24px;
       height: 24px;
@@ -46,7 +47,7 @@
   }
 
   // Text Content Area
-  & > div:last-child {
+  &>div:last-child {
     display: flex;
     flex-direction: column;
     gap: 2px;
@@ -59,7 +60,7 @@
       letter-spacing: -0.01em;
     }
 
-    p:nth-of-type(1) { 
+    p:nth-of-type(1) {
       margin: 0;
       font-size: 2rem;
       font-weight: 800;
@@ -67,7 +68,8 @@
       line-height: 1.2;
     }
 
-    p:nth-of-type(2) { // The Subtext (e.g., Total registered users)
+    p:nth-of-type(2) {
+      // The Subtext (e.g., Total registered users)
       margin: 0;
       font-size: 0.85rem;
       color: #7a7a7a;
@@ -82,8 +84,8 @@
   .basic-data-card {
     padding: 1.2rem;
     gap: 1rem;
-    
-    & > div:last-child p:nth-of-type(1) {
+
+    &>div:last-child p:nth-of-type(1) {
       font-size: 1.6rem;
     }
   }
