@@ -18,9 +18,9 @@ const MainLayout = () => {
       
       <div className="content-wrapper">
         <Navbar toggleSidebar={toggleSidebar} />
-        <main className="main-content">
+        <section className="main-content">
           <Outlet />
-        </main>
+        </section>
       </div>
     </div>
   );
