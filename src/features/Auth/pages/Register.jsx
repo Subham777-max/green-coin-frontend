@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import FormGroup from "../components/FormGroup";
 import "../style/auth.styles.scss";
+import Brand from "../components/Brand";
 
 
 function Register() {
@@ -30,6 +31,7 @@ function Register() {
 
   return (
     <main>
+      <Brand />
       <div className="form-container">
         <h2>Register</h2>
         <form onSubmit={handleSubmit}>

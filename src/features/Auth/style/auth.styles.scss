@@ -4,7 +4,38 @@ main {
   align-items: center;
   justify-content: center;
   padding: var(--space-lg);
+  position: relative;
 
+  .brand{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    img{
+      border-radius: 50%;
+      width: 50px;
+    }
+    .bottom{
+      h2{
+        font-size: 2rem;
+        line-height: 0.9;
+        white-space: nowrap;
+        color: var(--text-primary);
+        span{
+          color: var(--color-primary-500);
+        }
+      }
+      p{
+        font-size: 1rem;
+        text-align: center;
+        white-space: nowrap;
+        color: var(--text-secondary);
+      }
+    }
+  }
   background: radial-gradient(
       circle at top left,
       #d4f5e3,

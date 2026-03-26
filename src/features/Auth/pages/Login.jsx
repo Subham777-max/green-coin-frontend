@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import FormGroup from "../components/FormGroup";
 import "../style/auth.styles.scss";
+import Brand from "../components/Brand";
 
 function Login() {
-//   const navigate = useNavigate();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     identifier: "",
     password: "",
@@ -26,6 +27,7 @@ function Login() {
 
   return (
     <main>
+      <Brand />
       <div className="form-container">
         <h2>Login</h2>
         <form onSubmit={handleSubmit}>
