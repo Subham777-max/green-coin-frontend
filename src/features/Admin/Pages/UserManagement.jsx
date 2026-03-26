@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import useAdmin from '../hooks/useAdmin'
 import "../styles/userManagement.style.scss"
 
+import UserActions from '../components/UserActions'
+
 function UserManagement() {
   const { students, isLoading } = useAdmin()
   const [search, setSearch] = useState("")
@@ -9,7 +11,7 @@ function UserManagement() {
   if (isLoading) return <div>Loading...</div>
 
   // 🔥 filter logic
-  const filteredStudents = students.filter((user) => {
+  const filteredStudents = (students || []).filter((user) => {
     const query = search.toLowerCase()
 
     return (
@@ -71,10 +73,8 @@ function UserManagement() {
 
                 <td>{user.points}</td>
 
-                <td className='actions'>
-                  <button className='edit'>Edit</button>
-                  <button className='change'>Change Role</button>
-                  <button className='delete'>Delete</button>
+                <td className='actions-cell'>
+                  <UserActions userId={user._id} currentRole={user.role} />
                 </td>
 
               </tr>
