@@ -7,7 +7,7 @@ import '../styles/dashboard.style.scss';
 const Dashboard = () => {
     const { user } = useAuth();
     const { weeklyAnalytics, isLoading, isError } = useUser();
-
+    console.log(user);
     if (isLoading) {
         return (
             <div className="user-dashboard">
@@ -31,24 +31,24 @@ const Dashboard = () => {
 
     // Process weekly analytics
     const analyticsData = weeklyAnalytics || [];
-    
+
     // Attempt to match dates properly
     const today = new Date();
     // Use local date string formatted as YYYY-MM-DD
-    const localDateString = today.toLocaleDateString('en-CA'); 
+    const localDateString = today.toLocaleDateString('en-CA');
 
     const todayData = analyticsData.find(item => item._id === localDateString) || { totalWaste: 0 };
     const todayWaste = todayData.totalWaste;
 
     // Conversion rate: assuming some points calculation logic, like 1 GC per 10g of waste or similar.
     // If waste is stored in Grams, and 1 Kg is 10 points -> 1000g = 10 pts -> 1 pt = 100g.
-    const todayPoints = Math.floor(todayWaste / 100); 
+    const todayPoints = Math.floor(todayWaste / 100);
 
     const chartData = analyticsData.map(d => ({
         name: d._id.substring(5), // Just show MM-DD
         value: d.totalWaste
     }));
-
+    console.log(user);
     return (
         <div className="user-dashboard">
             <div className="dashboard-header">
@@ -66,7 +66,7 @@ const Dashboard = () => {
                 <div className="stat-card">
                     <span className="stat-title">Today's Earned Points</span>
                     <span className="stat-value accent">
-                        {todayPoints} GC
+                        {user.pointsEarnedToday}
                     </span>
                 </div>
             </div>
@@ -74,10 +74,10 @@ const Dashboard = () => {
             <div className="chart-section">
                 <h2>Weekly Waste Drop Analytics (Grams)</h2>
                 {chartData.length > 0 ? (
-                    <Barchart 
-                        data={chartData} 
-                        dataKey="value" 
-                        yAxisLabel="Waste (g)" 
+                    <Barchart
+                        data={chartData}
+                        dataKey="value"
+                        yAxisLabel="Waste (g)"
                     />
                 ) : (
                     <p>No waste dropped this week.</p>

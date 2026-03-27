@@ -52,6 +52,7 @@ const useAdmin = () => {
       {
         queryKey: ["notifications"],
         queryFn: getNotification,
+        enabled: user?.role === "admin",
         staleTime: FIVE_MIN,
         retry: 1,
       }
