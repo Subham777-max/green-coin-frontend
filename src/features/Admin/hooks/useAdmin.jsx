@@ -1,5 +1,5 @@
 import { useQueries } from "@tanstack/react-query";
-import { getAllDustbins, getAllStudents, getMarketProducts, getOverallWeeklyAnalytics, getTotalWeastDeposited, leaderboard } from "../services/admin.service";
+import { getAllDustbins, getAllStudents, getMarketProducts, getNotification, getOverallWeeklyAnalytics, getTotalWeastDeposited, leaderboard } from "../services/admin.service";
 import useAuth from "../../Auth/hooks/useAuth";
 
 
@@ -48,6 +48,12 @@ const useAdmin = () => {
         queryFn: getMarketProducts,
         staleTime: FIVE_MIN,
         retry: 1,
+      },
+      {
+        queryKey: ["notifications"],
+        queryFn: getNotification,
+        staleTime: FIVE_MIN,
+        retry: 1,
       }
     ],
   });
@@ -58,7 +64,8 @@ const useAdmin = () => {
     studentsQuery,
     weeklyAnalyticsQuery,
     leaderboardQuery,
-    marketProductsQuery
+    marketProductsQuery,
+    notificationsQuery
   ] = results;
 
   return {
@@ -69,6 +76,7 @@ const useAdmin = () => {
     weeklyAnalytics: weeklyAnalyticsQuery.data?.data,
     leaderboard: leaderboardQuery.data?.leaderboard,
     marketProducts: marketProductsQuery.data?.products,
+    notifications: notificationsQuery.data?.notifications,
 
     //  Loading state (if ANY query is loading)
     isLoading: results.some((q) => q.isLoading),
@@ -84,6 +92,7 @@ const useAdmin = () => {
       students: studentsQuery,
       weeklyAnalytics: weeklyAnalyticsQuery,
       marketProducts: marketProductsQuery,
+      notifications: notificationsQuery,
     },
   };
 };

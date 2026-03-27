@@ -74,3 +74,8 @@ export async function createProduct(name, price, image) {
     });
     return res.data;
 }
+
+export async function getNotification(){
+    const res = api.get("/admin/notifications");
+    return res.data;
+}
