@@ -44,7 +44,7 @@ function CreateBinForm() {
         </div>
 
         <div className="input-group">
-          <label htmlFor="capacity">Capacity Container (kg)</label>
+          <label htmlFor="capacity">Capacity Container (gms)</label>
           <input
             id="capacity"
             type="number"
@@ -75,4 +75,4 @@ function CreateBinForm() {
   )
 }
 
-export default CreateBinForm
+export default CreateBinForm

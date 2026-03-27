@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import useAdmin from '../../Admin/hooks/useAdmin';
 import useUser from '../hooks/useUser';
+import useVendorPurchase from '../hooks/useVendorPurchase';
 import '../../Admin/styles/marketplace.style.scss'; // Reuse Admin Marketplace styling
 import '../styles/marketplace.user.style.scss'; // User specific popup styling
 
@@ -12,16 +13,32 @@ function Marketplace() {
   const isProductLoading = queries.product.isLoading;
   const product = queries.product.data?.product;
 
-  if (isAdminLoading) {
-    return <div className="loading-state">Loading Marketplace...</div>;
-  }
-
   const handleProductClick = (id) => {
     setSelectedProductId(id);
   };
 
   const closePopup = () => {
     setSelectedProductId(null);
+  };
+
+  const [isApproving, setIsApproving] = useState(false);
+  
+  const purchaseMutation = useVendorPurchase(() => {
+    alert("Congratulations! Order Successful 🎉");
+    closePopup();
+  });
+
+  const handleBuy = async () => {
+    try {
+      // Direct call to backend API for purchase
+      purchaseMutation.mutate({
+        amount: product.price,
+        productId: product._id || product.id
+      });
+    } catch (err) {
+      console.error(err);
+      alert("Purchase initiation failed.");
+    }
   };
 
   return (
@@ -91,7 +108,13 @@ function Marketplace() {
                 <h3>{product.name}</h3>
                 <p className="price">{product.price} GC</p>
                 <p className="description">{product.description || "A wonderful premium product to redeem with your Green Coins!"}</p>
-                <button className="btn-buy-now">BUY NOW</button>
+                <button 
+                  className="btn-buy-now" 
+                  onClick={handleBuy} 
+                  disabled={isApproving || purchaseMutation.isPending}
+                >
+                  {isApproving ? "Approving Metamask..." : purchaseMutation.isPending ? "Purchasing..." : "BUY NOW"}
+                </button>
               </div>
             ) : (
               <div style={{ padding: '2rem', textAlign: 'center' }}>
