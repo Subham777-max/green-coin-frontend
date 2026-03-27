@@ -9,6 +9,7 @@ import LeaderBoard from "./features/Admin/Pages/LeaderBoard";
 import BinPages from "./features/Admin/Pages/BinPages";
 import Marketplace from "./features/Admin/Pages/Marketplace";
 import UserDetails from "./features/Admin/Pages/UserDetails";
+import TransactionHistoryAdmin from "./features/Admin/Pages/TransactionHistoryAdmin";
 import AdminRoute from "./global/utils/AdminRoutes";
 import DashboardUser from "./features/User/pages/Dashboard";
 import ProfileUser from "./features/User/pages/Profile";
@@ -46,6 +47,10 @@ export const router = createBrowserRouter([
             {
                 path: "/marketplace",
                 element: <AdminRoute><Marketplace /></AdminRoute>
+            },
+            {
+                path: "/transactions",
+                element: <AdminRoute><TransactionHistoryAdmin /></AdminRoute>
             },
             {
                 path: "/settings",

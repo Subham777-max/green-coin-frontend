@@ -79,3 +79,13 @@ export async function getNotification(){
     const res = await api.get("/admin/notifications");
     return res.data;
 }
+
+export async function getAllTransactions(filters = {}) {
+    const params = new URLSearchParams();
+    if (filters.uid) params.append("uid", filters.uid);
+    if (filters.status) params.append("status", filters.status);
+    if (filters.type) params.append("type", filters.type);
+    if (filters.date) params.append("date", filters.date);
+    const res = await api.get(`/admin/transactions?${params.toString()}`);
+    return res.data;
+}
