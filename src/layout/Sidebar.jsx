@@ -4,69 +4,69 @@ import useAuth from '../features/Auth/hooks/useAuth';
 import logo from "../assets/images (2).png"
 import { useLocation, useNavigate } from 'react-router-dom';
 const Sidebar = ({ isOpen, toggleSidebar }) => {
-  const { user , handleLogout } = useAuth();
+  const { user, handleLogout } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
   const menuItems = [
-  {
-    name: "Dashboard",
-    path: "/",
-    icon: <LayoutDashboard size={20} />,
-  },
-  {
-    name: "User Management",
-    path: "/user-management",
-    icon: <Users size={20} />,
-  },
-  {
-    name: "Bin Configuration",
-    path: "/bin",
-    icon: <Trash2 size={20} />,
-  },
-  {
-    name: "Leaderboard",
-    path: "/leaderboard",
-    icon: <BarChart3 size={20} />,
-  },
-  {
-    name: "Marketplace",
-    path: "/marketplace",
-    icon: <TicketSlash size={20} />,
-  },
-];
+    {
+      name: "Dashboard",
+      path: "/",
+      icon: <LayoutDashboard size={20} />,
+    },
+    {
+      name: "User Management",
+      path: "/user-management",
+      icon: <Users size={20} />,
+    },
+    {
+      name: "Bin Configuration",
+      path: "/bin",
+      icon: <Trash2 size={20} />,
+    },
+    {
+      name: "Leaderboard",
+      path: "/leaderboard",
+      icon: <BarChart3 size={20} />,
+    },
+    {
+      name: "Marketplace",
+      path: "/marketplace",
+      icon: <TicketSlash size={20} />,
+    },
+  ];
 
-const menueItemsUser = [
-  {
-    name: "Dashboard",
-    path: "/users",
-    icon: <LayoutDashboard size={20} />,
-  },
-  {
-    name: "Leaderboard",
-    path: "/leaderboard",
-    icon: <BarChart3 size={20} />,
-  },
-  {
-    name: "Marketplace",
-    path: "/users/marketplace",
-    icon: <TicketSlash size={20} />,
-  },
-  {
-    name: "My Orders",
-    path: "/users/orders",
-    icon: <FileText size={20} />,
-  },
-  {
-    name: "Transactions",
-    path: "/users/transactions",
-    icon: <History size={20} />,
-  },
-  {
-    name: "Profile",
-    path: "/users/profile",
-    icon: <Users size={20} />,
-  }
-]
+  const menueItemsUser = [
+    {
+      name: "Dashboard",
+      path: "/users",
+      icon: <LayoutDashboard size={20} />,
+    },
+    {
+      name: "Leaderboard",
+      path: "/leaderboard",
+      icon: <BarChart3 size={20} />,
+    },
+    {
+      name: "Marketplace",
+      path: "/users/marketplace",
+      icon: <TicketSlash size={20} />,
+    },
+    // {
+    //   name: "My Orders",
+    //   path: "/users/orders",
+    //   icon: <FileText size={20} />,
+    // },
+    {
+      name: "Transactions",
+      path: "/users/transactions",
+      icon: <History size={20} />,
+    },
+    {
+      name: "Profile",
+      path: "/users/profile",
+      icon: <Users size={20} />,
+    }
+  ]
 
   return (
     <aside className={`sidebar ${isOpen ? 'show' : ''}`}>
@@ -92,34 +92,32 @@ const menueItemsUser = [
             <div
               key={index}
               onClick={() => navigate(item.path)}
-              className={`nav-item ${
-                location.pathname === item.path ? "active" : ""
-              }`}
+              className={`nav-item ${location.pathname === item.path ? "active" : ""
+                }`}
             >
               {item.icon}
               <span>{item.name}</span>
             </div>
-        ))}
+          ))}
         {user.role === "user" &&
           menueItemsUser.map((item, index) => (
             <div
               key={index}
               onClick={() => navigate(item.path)}
-              className={`nav-item ${
-                location.pathname === item.path ? "active" : ""
-              }`}
+              className={`nav-item ${location.pathname === item.path ? "active" : ""
+                }`}
             >
               {item.icon}
               <span>{item.name}</span>
             </div>
-        ))}
+          ))}
         <div className="divider" />
         {/* <div className="nav-item"><History size={20} /><span>History</span></div>
         <div className="nav-item"><Settings size={20} /><span>Settings</span></div> */}
-         <div className="nav-item" onClick={handleLogout}>
-           <LogOut size={20} />
-           <span>Logout</span>
-         </div>
+        <div className="nav-item" onClick={handleLogout}>
+          <LogOut size={20} />
+          <span>Logout</span>
+        </div>
       </nav>
 
       {user?.role == "user" && (
