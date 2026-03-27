@@ -33,6 +33,11 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       path: "/marketplace",
       icon: <TicketSlash size={20} />,
     },
+    {
+      name: "Transactions",
+      path: "/transactions",
+      icon: <History size={20} />,
+    },
   ];
 
   const menueItemsUser = [
