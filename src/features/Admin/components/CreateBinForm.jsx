@@ -6,7 +6,8 @@ function CreateBinForm() {
   const { loading, handleCreateDustbin } = useCreateDustbin();
   const [form, setForm] = useState({
     name: "",
-    capacity: ""
+    capacity: "",
+    wasteType: "dry"
   })
 
   const handleChange = (e) => {
@@ -18,8 +19,8 @@ function CreateBinForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    handleCreateDustbin(form.name, Number(form.capacity));
-    setForm({ name: "", capacity: "" }); // Reset form
+    handleCreateDustbin(form.name, Number(form.capacity), form.wasteType);
+    setForm({ name: "", capacity: "", wasteType: "dry" }); // Reset form
   }
 
   return (
@@ -55,6 +56,20 @@ function CreateBinForm() {
             required
             min="1"
           />
+        </div>
+
+        <div className="input-group">
+          <label htmlFor="wasteType">Waste Type</label>
+          <select
+            id="wasteType"
+            name="wasteType"
+            value={form.wasteType}
+            onChange={handleChange}
+            required
+          >
+            <option value="dry">♻️ Dry Waste (Plastic, Paper, Metal…)</option>
+            <option value="wet">🌿 Wet Waste (Food, Organic…)</option>
+          </select>
         </div>
 
         <button disabled={loading} className='submit-btn' type="submit">

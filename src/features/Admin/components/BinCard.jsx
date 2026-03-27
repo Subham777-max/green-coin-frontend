@@ -28,6 +28,9 @@ function BinCard({ bin }) {
           <p className='bin-capacity'>
             Max Capacity: {bin.capacity / 1000}kg
           </p>
+          <p className='bin-capacity'>
+            Waste Type: {bin.wasteType}
+          </p>
         </div>
       </div>
 

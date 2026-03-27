@@ -53,8 +53,8 @@ export async function leaderboard() {
     return res.data;
 }
 
-export async function createDustbin(name, capacity) {
-    const res = await api.post("/iot/dustbin/create", { name, capacity });
+export async function createDustbin(name, capacity, wasteType) {
+    const res = await api.post("/iot/dustbin/create", { name, capacity, wasteType });
     return res.data;
 }
 export async function getMarketProducts() {

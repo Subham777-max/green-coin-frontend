@@ -3,10 +3,10 @@ import { createDustbin } from '../services/admin.service';
 
 function useCreateDustbin() {
   const [loading, setLoading] = useState(false);
-  async function handleCreateDustbin(name, capacity){
+  async function handleCreateDustbin(name, capacity, wasteType) {
     setLoading(true);
     try {
-      await createDustbin(name, capacity);
+      await createDustbin(name, capacity, wasteType);
     } catch (error) {
       console.error("Error creating dustbin:", error);
     } finally {
