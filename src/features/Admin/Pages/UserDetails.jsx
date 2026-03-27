@@ -3,6 +3,16 @@ import { useParams, useNavigate } from 'react-router-dom';
 import useUserModification from '../hooks/useUserModification';
 import WaveChart from '../components/WaveChart';
 import '../styles/UserDetails.style.scss';
+import { Bar } from 'recharts';
+import Barchart from '../components/Barchart';
+function formatWeight(weightInGrams) {
+  if (weightInGrams < 1000) {
+    return `${weightInGrams.toFixed(2)} g`;
+  } else {
+    const kg = weightInGrams / 1000;
+    return `${kg.toFixed(2)} kg`;
+  }
+}
 
 function UserDetails() {
   const { id } = useParams();
@@ -70,7 +80,7 @@ function UserDetails() {
       <div className="stats-section">
         <div className="stat-card">
           <h4>Waste Dropped Today</h4>
-          <p className="stat-value">{student.wasteDroppedToday || 0}g</p>
+          <p className="stat-value">{formatWeight(student.wasteDroppedToday) || "0 g"}</p>
         </div>
         <div className="stat-card">
           <h4>Points Earned Today</h4>
@@ -86,7 +96,7 @@ function UserDetails() {
         <h3>Weekly Activity Overview</h3>
         <p className="chart-subtitle">Waste dropped over the last 7 days (grams)</p>
         <div className="chart-container">
-          <WaveChart 
+          <Barchart 
             data={formattedAnalytics} 
             dataKey="waste" 
             yAxisLabel="Waste (g)" 

@@ -1,6 +1,6 @@
 import React from 'react'
 import BasicdataCard from '../components/BasicdataCard'
-import { Recycle, Trash, User } from 'lucide-react'
+import { Recycle, Trash, Trash2, User } from 'lucide-react'
 import useAdmin from '../hooks/useAdmin'
 import "../styles/dashboard.style.scss"
 import WaveChart from '../components/WaveChart'
@@ -38,12 +38,11 @@ function DashboardAdmin() {
                 <div className='dustbin-item' key={bin._id}>
                   
                   {/* Icon */}
-                  <div className='bin-icon'><Trash size={20} /></div>
+                  <div className='bin-icon'><Trash2 size={20} /></div>
 
                   {/* Info */}
                   <div className='bin-info'>
                     <p className='bin-name'>{bin.name}</p>
-                    <p className='bin-location'>Location</p>
                   </div>
 
                   {/* Status */}
