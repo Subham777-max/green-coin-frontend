@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Authcontext } from "../Context/Authcontext";
-import { login, register } from "../services/auth.service";
+import { login, logout, register } from "../services/auth.service";
 
 function useAuth(){
     const { user, setUser ,loading, setLoading } = useContext(Authcontext);
@@ -28,7 +28,18 @@ function useAuth(){
             setLoading(false);
         }
     }
-    return { user, loading , handleLogin , handleRegister };
+    async function handleLogout(){
+        setLoading(true);
+        try{
+            await logout();
+            setUser(null);
+        }catch(err){
+            console.log(err);
+        }finally{
+            setLoading(false);
+        }
+    }
+    return { user, loading , handleLogin , handleRegister , handleLogout };
 }
 
 export default useAuth;

@@ -4,7 +4,7 @@ import useAuth from '../features/Auth/hooks/useAuth';
 import logo from "../assets/images (2).png"
 import { useLocation, useNavigate } from 'react-router-dom';
 const Sidebar = ({ isOpen, toggleSidebar }) => {
-  const { user } = useAuth();
+  const { user , handleLogout } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
   const menuItems = [
@@ -68,13 +68,16 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         <div className="divider" />
         {/* <div className="nav-item"><History size={20} /><span>History</span></div>
         <div className="nav-item"><Settings size={20} /><span>Settings</span></div> */}
-         <div className="nav-item"><LogOut size={20} /><span>Logout</span></div>
+         <div className="nav-item" onClick={handleLogout}>
+           <LogOut size={20} />
+           <span>Logout</span>
+         </div>
       </nav>
 
       {user?.role == "user" && (
         <div className="balance-card">
           <p>GREENCOIN POINT</p>
-          <h2>247</h2>
+          <h2>{user?.points || 0}</h2>
           <span>SYSTEM REVENUES</span>
         </div>
       )}
