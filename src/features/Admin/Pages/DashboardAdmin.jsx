@@ -16,7 +16,7 @@ function DashboardAdmin() {
     <div className='dashboard-admin'>
       <div className='basic-data'>
         <BasicdataCard icon={<User size={30} />} title="Total Users" value={students.length} text="Number of students in the system" />
-        <BasicdataCard color={"yellow"} icon={<Recycle size={30} />} title="Total Waste Deposited" value={totalWaste.totalWasteKG} text="Total amount of waste deposited" />
+        <BasicdataCard color={"yellow"} icon={<Recycle size={30} />} title="Total Waste Deposited" value={totalWaste.totalWasteKG + " kg"} text="Total amount of waste deposited" />
         <BasicdataCard color={"green"} icon={<Trash size={30} />} title="Active Dustbins" value={dustbins.length} text="Number of dustbins in the system" />
       </div>
       <div className='analytics-data'>
